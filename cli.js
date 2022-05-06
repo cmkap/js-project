@@ -1,9 +1,9 @@
 const Thermostat = require('./thermostat');
-const readline = require('readline');
+const Readline = require('readline');
 
 const thermostat = new Thermostat();
 
-const rl = readline.createInterface({
+const rl = Readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
@@ -17,14 +17,21 @@ const commands = (answer) => {
         case 'down':
             thermostat.down()
             break;
-        case 'exit':
+        case 'stop':
             rl.close()
+            break;
+        case 'psm on':
+            thermostat.setPowerSavingMode(true)
+            break;
+        case 'psm off':
+            thermostat.setPowerSavingMode(false)
             break;
         default:
             console.log('Incorrect input')
         
     }
-    console.log(`Temperature is ${thermostat.getTemperature()}`);
+    
+    thermostat.getTemperature() === 25 || thermostat.getTemperature() === 32 ? console.log(`Temperature is ${thermostat.getTemperature()} (maximum reached)`) : console.log(`Temperature is ${thermostat.getTemperature()}`);
     rl.question('Enter command > ', commands)
 };
    

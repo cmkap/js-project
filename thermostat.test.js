@@ -74,4 +74,6 @@ describe('Thermostat', () => {
         }
         expect(thermostat.currentEnergyUsage()).toEqual('high-usage');
     });
+
+    
 })

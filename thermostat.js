@@ -1,3 +1,5 @@
+const Weather = require('./weatherApi')
+
 class Thermostat{
     constructor() {
         this.temperature = 20;
